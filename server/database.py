@@ -1,3 +1,4 @@
+import os
 import mysql.connector
 from mysql.connector import Error
 from contextlib import contextmanager
@@ -6,7 +7,11 @@ from contextlib import contextmanager
 def create_connection():
     try:
         return mysql.connector.connect(
-            host="mysql", user="myuser", passwd="myuser123!", database="mydatabase", charset="utf8mb4"
+            host="mysql",
+            user=os.getenv("MYSQL_USER"),
+            passwd=os.getenv("MYSQL_PASSWORD"),
+            database=os.getenv("MYSQL_DATABASE"),
+            charset="utf8mb4"
         )
     except Error as e:
         print(f"에러 '{e}' 발생")

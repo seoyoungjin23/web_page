@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+mysql-connector-python
+pydantic[email]
+passlib
+python-jose
+python-jose[cryptography]
